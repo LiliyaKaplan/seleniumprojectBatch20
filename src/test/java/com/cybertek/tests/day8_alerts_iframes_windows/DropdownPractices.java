@@ -42,6 +42,7 @@ public class DropdownPractices {
 
         List<String> expectedMonthOptions = Arrays.asList("January","February","March","April","May","June",
                 "July","August","September","October","November","December");
+        BrowserUtils.wait(5);
 
 
       /*  List<String> actualMonthsTexts = new ArrayList<>();

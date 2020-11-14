@@ -18,8 +18,9 @@ public class BrowserUtils {
 
     public static void wait(int seconds) {
         try {
-            Thread.sleep(seconds * 500);
+            Thread.sleep(1000 * seconds);
         } catch (InterruptedException e) {
+            System.out.println("Interrupted exception caught");
         }
     }
 
