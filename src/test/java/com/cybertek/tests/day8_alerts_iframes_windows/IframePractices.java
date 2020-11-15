@@ -4,6 +4,7 @@ import com.cybertek.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -29,7 +30,7 @@ public class IframePractices {
         //1 - ByIndex
         //driver.switchTo().frame(0);
 
-        //2 - by Id or name: passing id attribute value
+        //2 - By Id or name: passing id attribute value
         //driver. switchTo().frame("mce_0_ifr");
 
         //3 - Locate as a webElement, then switch to it
@@ -37,6 +38,13 @@ public class IframePractices {
         driver.switchTo().frame(iframe);
 
         WebElement yourContentGoesHereText = driver.findElement(By.xpath("//p"));
+
+        Assert.assertTrue(yourContentGoesHereText.isDisplayed(), "Text is NOT displayed. Verification Failed!!!");
+
+        driver.switchTo().defaultContent();
+        WebElement headerText = driver.findElement(By.xpath("//h3"));
+        Assert.assertTrue(headerText.isDisplayed(), "Header text is NOT displayed. Verification FAILED!!!");
+
     }
 
 
