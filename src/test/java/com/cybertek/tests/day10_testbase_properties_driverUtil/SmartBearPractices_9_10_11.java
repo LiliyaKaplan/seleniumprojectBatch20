@@ -8,13 +8,27 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 public class SmartBearPractices_9_10_11 extends TestBase {
 
     @Test
-    public void p9_delete_order_task(){
-        driver.get("http://secure.smartbearsoftware.com/samples/testcomplete12/WebOrders/login.aspx");
+    public void p9_delete_order_task() throws IOException {
+        //creating properties object to be able to read properties file
+        Properties properties = new Properties();
+
+        //opening the file in JVM memory using FileInputStream
+        FileInputStream file = new FileInputStream("configuration.properties");
+
+        //loading the file into properties object
+        properties.load(file);
+
+        String url =  properties.getProperty("smartBearUrl");
+
+        driver.get(url);
         SmartBearUtilities.loginToSmartBear(driver);
         WebElement markSmithCheckBox = driver.findElement(By.xpath("//td[.='Mark Smith']/preceding-sibling::td[1]"));
         markSmithCheckBox.click();
