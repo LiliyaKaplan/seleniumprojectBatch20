@@ -29,6 +29,28 @@ public class JavaScriptExecutor_Practices {
         js.executeScript("arguments[0].scrollIntoView(true)", link);
         js.executeScript("arguments[0].scrollIntoView(true)", homeLink);
 
+        BrowserUtils.wait(2);
+        js.executeScript("window.scrollBy(500, 500)");
+
+    }
+
+    @Test
+    public void fill_orm_using_javascript(){
+        Driver.getDriver().get("http://practice.cybertekschool.com/sign_up");
+        WebElement usernameInput = Driver.getDriver().findElement(By.name("full_name"));
+        WebElement emailInput = Driver.getDriver().findElement(By.name("email"));
+        WebElement signUpButton = Driver.getDriver().findElement(By.name("wooden_spoon"));
+
+        JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
+        js.executeScript("arguments[0].setAttribute('value', 'Jane Doe')", usernameInput );
+
+        js.executeScript("arguments[0].setAttribute('value', 'something@gmail.com')", emailInput );
+
+        js.executeScript("arguments[0].click()", signUpButton );
+
+
+
+
     }
 
 }
